@@ -17,6 +17,8 @@ or add
 
 ```
 "ignatenkovnikita/yii2-addresses": "*"
+./console/yii migrate --migrationPath=@vendor/ignatenkovnikita/yii2-addresses/
+
 ```
 
 to the require section of your `composer.json` file.
