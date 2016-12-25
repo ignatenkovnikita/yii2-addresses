@@ -2,12 +2,14 @@
 
 namespace ignatenkovnikita\addresses;
 
+use ignatenkovnikita\dadata\DadataModel;
 use Yii;
 
 /**
  * This is the model class for table "{{%address}}".
  *
  * @property integer $id
+ * @property string $fias_id
  * @property string $json
  */
 class Address extends \yii\db\ActiveRecord
@@ -26,7 +28,7 @@ class Address extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['json'], 'string'],
+            [['json', 'fias_id'], 'string'],
         ];
     }
 
@@ -37,6 +39,7 @@ class Address extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'Fias Id' => 'Fias Id',
             'json' => 'Json',
         ];
     }
@@ -47,6 +50,23 @@ class Address extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \common\models\query\AddressQuery(get_called_class());
+        return new AddressQuery(get_called_class());
+    }
+
+    public static function getExistOrNew(DadataModel $data)
+    {
+        $town = self::find()->where(['fias_id' => $data->fiasId])->one();
+        if (!$town) {
+            $town = new self();
+            $town->fias_id = $data->fiasId;
+            $town->json = $data->rawData;
+            $town->save();
+        }
+
+        return $town;
+    }
+
+    public function getFull(){
+        return 123;
     }
 }

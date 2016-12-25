@@ -10,13 +10,14 @@ class m161222_094846_init extends Migration
     {
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
+            'fias_id' => $this->string(),
             'json' => $this->text()
         ]);
     }
 
     public function down()
     {
-        $this->dropTable($this->createTable());
+        $this->dropTable($this->tableName);
     }
 
     /*
