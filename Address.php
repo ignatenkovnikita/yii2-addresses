@@ -66,7 +66,49 @@ class Address extends \yii\db\ActiveRecord
         return $town;
     }
 
-    public function getFull(){
-        return 123;
+    public function getFull()
+    {
+        $r = $this->getMeta();
+        return $this->getPostalCode() . ' ' . $this->getRegionWithType() . ' ' . $this->getCityWithType() . ' ' . $this->getStreetWithType() . ' ' . $this->getHouseWithType() . ' ' . $this->getFlatWithType();
+    }
+
+    public function getRaw()
+    {
+        return $this->meta;
+    }
+
+    protected function getMeta()
+    {
+        return json_decode($this->json);
+    }
+
+    public function getPostalCode()
+    {
+        return $this->meta->postal_code;
+    }
+
+    public function getRegionWithType()
+    {
+        return $this->meta->region_with_type;
+    }
+
+    public function getCityWithType()
+    {
+        return $this->meta->city_with_type;
+    }
+
+    public function getStreetWithType()
+    {
+        return $this->meta->street_with_type;
+    }
+
+    public function getHouseWithType()
+    {
+        return $this->meta->house_type . ' ' . $this->meta->house;
+    }
+
+    public function getFlatWithType()
+    {
+        return $this->meta->flat_type . ' ' . $this->meta->flat;
     }
 }
