@@ -7,7 +7,7 @@
  * Web Site: http://IgnatenkovNikita.ru
  */
 
-namespace ignatenkovnikita\addresses;
+namespace ignatenkovnikita\addresses\behaviors;
 
 
 use yii\base\Behavior;

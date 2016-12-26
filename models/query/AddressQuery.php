@@ -1,6 +1,6 @@
 <?php
 
-namespace ignatenkovnikita\addresses;
+namespace ignatenkovnikita\addresses\models\query;
 
 /**
  * This is the ActiveQuery class for [[\common\models\Address]].

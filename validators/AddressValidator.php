@@ -7,9 +7,10 @@
  * Web Site: http://IgnatenkovNikita.ru
  */
 
-namespace ignatenkovnikita\addresses;
+namespace ignatenkovnikita\addresses\validators;
 
 
+use ignatenkovnikita\addresses\models\Address;
 use ignatenkovnikita\dadata\DadataFactory;
 use ignatenkovnikita\dadata\DadataModel;
 use yii\validators\Validator;
@@ -21,10 +22,10 @@ class AddressValidator extends Validator
         $daDataModel = DadataFactory::fromJson($model->{$attribute});
 
         if ($daDataModel instanceof DadataModel && $daDataModel->validate()) {
-            $town = Address::getExistOrNew($daDataModel);
-            if ($town) {
+            $address = Address::getExistOrNew($daDataModel);
+            if ($address) {
                 $attrId = str_replace('dadata', 'id', $attribute);
-                $model->{$attrId} = $town->id;
+                $model->{$attrId} = $address->id;
             }
         }
     }
