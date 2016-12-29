@@ -5,6 +5,7 @@ namespace ignatenkovnikita\addresses\models;
 use ignatenkovnikita\addresses\models\query\AddressQuery;
 use ignatenkovnikita\dadata\DadataModel;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%address}}".
@@ -256,5 +257,14 @@ class Address extends \yii\db\ActiveRecord
     public function getFlatWithType()
     {
         return $this->meta->flat_type . ' ' . $this->meta->flat;
+    }
+
+    public static function getCitiesAsList($q = false, $limit = 10, $id = 'city', $name = 'city'){
+        $query =  Address::find()->select([ 'city'])->distinct('city')->limit($limit);
+        if($q){
+            $query->withCity($q);
+        }
+        return ArrayHelper::map($query->all() , $id, $name);
+
     }
 }

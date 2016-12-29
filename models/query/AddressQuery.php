@@ -31,4 +31,9 @@ class AddressQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function withCity($city)
+    {
+        return $this->andWhere(['ilike', 'city', $city]);
+    }
 }
