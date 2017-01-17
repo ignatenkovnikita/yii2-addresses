@@ -216,7 +216,7 @@ class Address extends \yii\db\ActiveRecord
     public function getFull()
     {
         $r = $this->getMeta();
-        return $this->getPostalCode() . ' ' . $this->getRegionWithType() . ' ' . $this->getCityWithType() . ' ' . $this->getStreetWithType() . ' ' . $this->getHouseWithType() . ' ' . $this->getFlatWithType();
+        return $this->getRegionWithType() . ' ' . $this->getCityWithType() . ' ' . $this->getStreetWithType() . ' ' . $this->getHouseWithType() . ' ' . $this->getFlatWithType();
     }
 
     public function getRaw()
