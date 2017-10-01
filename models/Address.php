@@ -67,7 +67,6 @@ use yii\helpers\ArrayHelper;
  * @property string $square_meter_price
  * @property string $flat_price
  * @property string $postal_box
- * @property string $fias_id
  * @property string $fias_level
  * @property string $kladr_id
  * @property string $capital_marker

@@ -27,7 +27,24 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
-
+Add  line to backend config
 ```php
-<?= \ignatenkovnikita\addresses\AutoloadExample::widget(); ?>```
+'address' => [
+            'class' => \ignatenkovnikita\addresses\Address::class,
+            'controllerNamespace' => \ignatenkovnikita\addresses\Address::backendControllerNamespace(),
+            'viewPath' => '@vendor/ignatenkovnikita/yii2-addresses/backend/views',
+]
+```
+    
+Add  line to frontend config
+```php
+'address' => [
+            'class' => \ignatenkovnikita\addresses\Address::class,
+            'controllerNamespace' => \ignatenkovnikita\addresses\Address::frontendControllerNamespace(),
+]
+```
+
+
+// todo
+* refactoring
+* add dependence
