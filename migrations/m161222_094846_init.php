@@ -8,6 +8,10 @@ class m161222_094846_init extends Migration
 
     public function up()
     {
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
             'json' => $this->text(),
@@ -83,7 +87,7 @@ class m161222_094846_init extends Migration
             'qc_house' => $this->string(),
             'unparsed_parts' => $this->string(),
             'qc' => $this->string()
-        ]);
+        ],$tableOptions);
     }
 
     public function down()
