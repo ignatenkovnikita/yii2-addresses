@@ -212,6 +212,14 @@ class Address extends \yii\db\ActiveRecord
         return $address;
     }
 
+
+    public static  function getFullById($id)
+    {
+        $model = self::findOne($id);
+        return $model->getFull();
+
+    }
+
     public function getFull()
     {
         $r = $this->getMeta();
