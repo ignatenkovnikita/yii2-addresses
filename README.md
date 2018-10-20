@@ -17,7 +17,7 @@ or add
 
 ```
 "ignatenkovnikita/yii2-addresses": "*"
-./console/yii migrate --migrationPath=@vendor/ignatenkovnikita/yii2-addresses/
+./console/yii migrate --migrationPath=@vendor/ignatenkovnikita/yii2-addresses/migrations
 
 ```
 
@@ -42,6 +42,33 @@ Add  line to frontend config
             'class' => \ignatenkovnikita\addresses\Address::class,
             'controllerNamespace' => \ignatenkovnikita\addresses\Address::frontendControllerNamespace(),
 ]
+```
+
+Add in backend config in modules 
+```php
+'address' => [
+            'class' => \ignatenkovnikita\addresses\Address::class,
+            'controllerNamespace' => \ignatenkovnikita\addresses\Address::backendControllerNamespace(),
+            'viewPath' => '@vendor/ignatenkovnikita/yii2-addresses/backend/views',
+        ],
+```
+Add in frontend config in modules
+```php
+'address' => [
+            'class' => \ignatenkovnikita\addresses\Address::class,
+            'controllerNamespace' => \ignatenkovnikita\addresses\Address::frontendControllerNamespace(),
+        ],
+```
+
+
+Add component dadata
+```php
+'dadata' => [
+            'class' => \ignatenkovnikita\dadata\Client::className(),
+            'token' => 'DADATA_TOKEN,
+            'secret' => 'DADATA_SECRET',
+            'query_path' => 'http://suggestions.dadata.ru',
+        ],
 ```
 
 
